@@ -14,7 +14,7 @@ class MsgDisp extends StatefulWidget {
 class _MsgDispState extends State<MsgDisp> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(builder: (context, state) {
+    return BlocBuilder<ActivityBloc, ActivityState>(builder: (context, state) {
       if (state is Loading) {
         return Center(
           child: CircularProgressIndicator(),

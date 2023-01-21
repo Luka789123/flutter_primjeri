@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
-import 'injection_container.dart' as di;
+import 'service_locator.dart' as di;
+
 import 'features/get_activity/presentation/route/route.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  di.intl();
-  runApp(BlocProvider<ActivityBloc>(
-    create: (context) => di.sl<ActivityBloc>(),
-    child: ActivityApp(),
+  di.init();
+  runApp(BlocProvider(
+    create: (_) => di.sl<ActivityBloc>(),
+    child: const ActivityApp(),
   ));
 }
 
@@ -22,7 +22,7 @@ class ActivityApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ActivityHomeRoute(),
     );

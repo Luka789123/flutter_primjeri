@@ -1,4 +1,6 @@
+import 'package:activity_app/features/get_activity/presentation/bloc/activity_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ControlButton extends StatelessWidget {
   const ControlButton({
@@ -8,7 +10,8 @@ class ControlButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () => null,
+        onPressed: () =>
+            BlocProvider.of<ActivityBloc>(context).add(GetActivity()),
         style: ButtonStyle(
             backgroundColor:
                 MaterialStateProperty.resolveWith((states) => Colors.teal)),
